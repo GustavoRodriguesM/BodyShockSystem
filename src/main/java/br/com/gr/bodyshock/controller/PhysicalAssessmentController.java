@@ -24,18 +24,18 @@ import br.com.gr.bodyshock.enums.Sexo;
 import br.com.gr.bodyshock.enums.Status;
 import br.com.gr.bodyshock.enums.TipoAvaliacao;
 import br.com.gr.bodyshock.enums.TipoDado;
-import br.com.gr.bodyshock.exception.DietaTreinoException;
+import br.com.gr.bodyshock.exception.DietAndTrainingException;
 import br.com.gr.bodyshock.exception.ScheduleException;
 import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Avaliado;
-import br.com.gr.bodyshock.service.AnamneseService;
-import br.com.gr.bodyshock.service.AvaliacaoService;
-import br.com.gr.bodyshock.service.AvaliadoService;
-import br.com.gr.bodyshock.service.PerimetrosService;
-import br.com.gr.bodyshock.service.RelatorioService;
-import br.com.gr.bodyshock.service.TesteResistenciaService;
-import br.com.gr.bodyshock.service.UsuarioService;
-import br.com.gr.bodyshock.service.impl.DadoGraficoService;
+import br.com.gr.bodyshock.service.AnamnesisService;
+import br.com.gr.bodyshock.service.PhysicalTestService;
+import br.com.gr.bodyshock.service.ClientService;
+import br.com.gr.bodyshock.service.PerimetersService;
+import br.com.gr.bodyshock.service.ReportService;
+import br.com.gr.bodyshock.service.ResistenceTestService;
+import br.com.gr.bodyshock.service.UserService;
+import br.com.gr.bodyshock.service.impl.GraphicalDataService;
 import br.com.gr.bodyshock.util.EnviaEmail;
 import br.com.gr.bodyshock.util.GeraSenha;
 import br.com.gr.bodyshock.validator.AvaliadoAvaliacaoWrapperValidator;
@@ -52,28 +52,28 @@ public class PhysicalAssessmentController extends AbstractController {
 	private static final String PAGINA_AVALIACAO_FORM = "avaliacao/alteracaoForm";
 
 	@Autowired
-	private AvaliacaoService avaliacaoService;
+	private PhysicalTestService avaliacaoService;
 
 	@Autowired
-	private AvaliadoService avaliadoService;
+	private ClientService avaliadoService;
 
 	@Autowired
-	private AnamneseService anamneseService;
+	private AnamnesisService anamneseService;
 
 	@Autowired
-	private UsuarioService usuarioService;
+	private UserService usuarioService;
 
 	@Autowired
-	private TesteResistenciaService testeResistenciaService;
+	private ResistenceTestService testeResistenciaService;
 
 	@Autowired
-	private DadoGraficoService dadoGraficoService;
+	private GraphicalDataService dadoGraficoService;
 
 	@Autowired
-	private RelatorioService relatorioService;
+	private ReportService relatorioService;
 
 	@Autowired
-	private PerimetrosService perimetrosService;
+	private PerimetersService perimetrosService;
 
 	@Autowired
 	private EnviaEmail enviaEmail;
@@ -192,7 +192,7 @@ public class PhysicalAssessmentController extends AbstractController {
 			if (avaliacao.getStatus() == Status.PAGO)
 				enviaEmail.confirmacaoValidacaoAvaliacao(avaliacao.getAvaliado());
 			mensagem = this.successMessage();
-		} catch (DietaTreinoException e) {
+		} catch (DietAndTrainingException e) {
 			mensagem = this.errorMessage("É necessário cadastrar uma dieta e um treino antes de ativar a avaliação.");
 		}
 

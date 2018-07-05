@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import br.com.gr.bodyshock.model.Dieta;
 import br.com.gr.bodyshock.repository.DietaRepository;
-import br.com.gr.bodyshock.service.DietaService;
+import br.com.gr.bodyshock.service.DietService;
 
 @Service
-public class DietaServiceImpl implements DietaService {
+public class DietServiceImpl implements DietService {
 
 	@Autowired
 	private DietaRepository dietaRepository;

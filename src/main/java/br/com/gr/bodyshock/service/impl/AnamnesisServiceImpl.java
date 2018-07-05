@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import br.com.gr.bodyshock.model.Anamnese;
 import br.com.gr.bodyshock.repository.AnamneseRepository;
-import br.com.gr.bodyshock.service.AnamneseService;
+import br.com.gr.bodyshock.service.AnamnesisService;
 
 @Service
-public class AnamneseServiceImpl implements AnamneseService {
+public class AnamnesisServiceImpl implements AnamnesisService {
 
 	@Autowired
 	private AnamneseRepository anamneseRepository;

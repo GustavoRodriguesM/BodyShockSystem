@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import br.com.gr.bodyshock.model.TesteResistencia;
 import br.com.gr.bodyshock.repository.TesteResistenciaRepository;
-import br.com.gr.bodyshock.service.TesteResistenciaService;
+import br.com.gr.bodyshock.service.ResistenceTestService;
 
 @Service
-public class TesteResistenciaServiceImpl implements TesteResistenciaService {
+public class ResistenceTestServiceImpl implements ResistenceTestService {
 
 	@Autowired
 	private TesteResistenciaRepository testeResistenciaRepository;

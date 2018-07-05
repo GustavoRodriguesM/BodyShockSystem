@@ -22,14 +22,14 @@ import br.com.gr.bodyshock.model.Usuario;
 import br.com.gr.bodyshock.repository.AvaliadoRepository;
 import br.com.gr.bodyshock.repository.DietaRepository;
 import br.com.gr.bodyshock.repository.TreinoRepository;
-import br.com.gr.bodyshock.service.AvaliadoService;
-import br.com.gr.bodyshock.service.CalculoService;
-import br.com.gr.bodyshock.service.DietaService;
-import br.com.gr.bodyshock.service.TreinoService;
-import br.com.gr.bodyshock.service.UsuarioService;
+import br.com.gr.bodyshock.service.ClientService;
+import br.com.gr.bodyshock.service.PollockProtocolService;
+import br.com.gr.bodyshock.service.DietService;
+import br.com.gr.bodyshock.service.TrainingService;
+import br.com.gr.bodyshock.service.UserService;
 
 @Service
-public class AvaliadoServiceImpl implements AvaliadoService {
+public class ClientServiceImpl implements ClientService {
 
 	@Autowired
 	private AvaliadoRepository avaliadoRepository;
@@ -41,16 +41,16 @@ public class AvaliadoServiceImpl implements AvaliadoService {
 	private TreinoRepository treinoRepository;
 
 	@Autowired
-	private UsuarioService usuarioService;
+	private UserService usuarioService;
 
 	@Autowired
-	private DietaService dietaService;
+	private DietService dietaService;
 
 	@Autowired
-	private TreinoService treinoService;
+	private TrainingService treinoService;
 
 	@Autowired
-	private CalculoService calculoService;
+	private PollockProtocolService calculoService;
 
 	@Value("${app.url}")
 	private String baseUrl;

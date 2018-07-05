@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import br.com.gr.bodyshock.model.Perimetros;
 import br.com.gr.bodyshock.repository.PerimetrosRepository;
-import br.com.gr.bodyshock.service.PerimetrosService;
+import br.com.gr.bodyshock.service.PerimetersService;
 
 @Service
-public class PerimetrosServiceImpl implements PerimetrosService {
+public class PerimetersServiceImpl implements PerimetersService {
 
 	@Autowired
 	private PerimetrosRepository perimetrosRepository;

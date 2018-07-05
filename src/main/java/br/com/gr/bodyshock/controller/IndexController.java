@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.gr.bodyshock.enums.TipoDado;
-import br.com.gr.bodyshock.service.impl.DadoGraficoService;
+import br.com.gr.bodyshock.service.impl.GraphicalDataService;
 import br.com.gr.bodyshock.util.EnviaEmail;
 import br.com.gr.bodyshock.validator.ContatoValidator;
 import br.com.gr.bodyshock.wrapper.ContatoWrapper;
@@ -22,7 +22,7 @@ import br.com.gr.bodyshock.wrapper.ContatoWrapper;
 public class IndexController extends AbstractController {
 
 	@Autowired
-	private DadoGraficoService dadoGraficoService;
+	private GraphicalDataService dadoGraficoService;
 
 	@Autowired
 	private EnviaEmail enviaEmail;

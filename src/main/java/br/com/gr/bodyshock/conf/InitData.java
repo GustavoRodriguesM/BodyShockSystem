@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import br.com.gr.bodyshock.model.Role;
 import br.com.gr.bodyshock.model.Usuario;
 import br.com.gr.bodyshock.repository.RoleRepository;
-import br.com.gr.bodyshock.service.UsuarioService;
+import br.com.gr.bodyshock.service.UserService;
 
 @Component
 public class InitData implements ApplicationListener<ContextRefreshedEvent>{
@@ -21,7 +21,7 @@ public class InitData implements ApplicationListener<ContextRefreshedEvent>{
 	private RoleRepository roleRepository;
 	
 	@Autowired
-	private UsuarioService usuarioService;
+	private UserService usuarioService;
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent arg0) {

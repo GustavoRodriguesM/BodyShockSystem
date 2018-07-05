@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.com.gr.bodyshock.model.Treino;
 
-public interface TreinoService extends AbstractService<Treino, String> {
+public interface TrainingService extends AbstractService<Treino, String> {
 	List<String> findAllIds();
 
 	List<Treino> findAllWithoutDefault();

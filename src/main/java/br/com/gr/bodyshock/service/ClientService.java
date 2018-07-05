@@ -9,7 +9,7 @@ import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Avaliado;
 import br.com.gr.bodyshock.model.Usuario;
 
-public interface AvaliadoService extends AbstractService<Avaliado, Long> {
+public interface ClientService extends AbstractService<Avaliado, Long> {
 
 	Avaliado findByUser(Usuario usuario);
 	

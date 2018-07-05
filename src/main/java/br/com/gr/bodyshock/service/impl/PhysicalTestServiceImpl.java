@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 
 import br.com.gr.bodyshock.enums.Ativacao;
 import br.com.gr.bodyshock.enums.Status;
-import br.com.gr.bodyshock.exception.DietaTreinoException;
+import br.com.gr.bodyshock.exception.DietAndTrainingException;
 import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Avaliado;
 import br.com.gr.bodyshock.repository.AvaliacaoRepository;
-import br.com.gr.bodyshock.service.AvaliacaoService;
+import br.com.gr.bodyshock.service.PhysicalTestService;
 
 @Service
-public class AvaliacaoServiceImpl implements AvaliacaoService {
+public class PhysicalTestServiceImpl implements PhysicalTestService {
 
 	@Autowired
 	private AvaliacaoRepository avaliacaoRepository;
@@ -48,7 +48,7 @@ public class AvaliacaoServiceImpl implements AvaliacaoService {
 	}
 
 	@Override
-	public void validate(Avaliacao avaliacao) throws DietaTreinoException {
+	public void validate(Avaliacao avaliacao) throws DietAndTrainingException {
 		Avaliado avaliado = avaliacao.getAvaliado();
 		if (avaliado.getDieta() != null && avaliado.getTreino() != null) {
 			if (avaliacao.getStatus() == Status.PAGO) {
@@ -60,7 +60,7 @@ public class AvaliacaoServiceImpl implements AvaliacaoService {
 			}
 			this.avaliacaoRepository.save(avaliacao);
 		} else 
-			throw new DietaTreinoException();
+			throw new DietAndTrainingException();
 
 	}
 

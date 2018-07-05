@@ -12,9 +12,9 @@ import br.com.gr.bodyshock.enums.Ativacao;
 import br.com.gr.bodyshock.enums.Status;
 import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Avaliado;
-import br.com.gr.bodyshock.service.AvaliacaoService;
-import br.com.gr.bodyshock.service.AvaliadoService;
-import br.com.gr.bodyshock.service.impl.DadoGraficoService;
+import br.com.gr.bodyshock.service.PhysicalTestService;
+import br.com.gr.bodyshock.service.ClientService;
+import br.com.gr.bodyshock.service.impl.GraphicalDataService;
 
 @Controller
 public class DashboardController extends AbstractController {
@@ -24,13 +24,13 @@ public class DashboardController extends AbstractController {
 	private static final String CLIENT_TRIAL_PAGE = "dashboard/degustacao";
 
 	@Autowired
-	private DadoGraficoService dadoGraficoService;
+	private GraphicalDataService dadoGraficoService;
 
 	@Autowired
-	private AvaliadoService avaliadoService;
+	private ClientService avaliadoService;
 
 	@Autowired
-	private AvaliacaoService avaliacaoService;
+	private PhysicalTestService avaliacaoService;
 
 	@GetMapping("/dashboard")
 	public ModelAndView dashboard() {

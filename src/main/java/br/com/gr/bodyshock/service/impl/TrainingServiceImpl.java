@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import br.com.gr.bodyshock.model.Treino;
 import br.com.gr.bodyshock.repository.TreinoRepository;
-import br.com.gr.bodyshock.service.TreinoService;
+import br.com.gr.bodyshock.service.TrainingService;
 
 @Service
-public class TreinoServiceImpl implements TreinoService {
+public class TrainingServiceImpl implements TrainingService {
 
 	@Autowired
 	private TreinoRepository treinoRepository;

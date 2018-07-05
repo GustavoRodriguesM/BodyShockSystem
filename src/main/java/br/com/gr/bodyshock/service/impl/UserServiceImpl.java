@@ -11,11 +11,11 @@ import org.springframework.stereotype.Service;
 import br.com.gr.bodyshock.model.Role;
 import br.com.gr.bodyshock.model.Usuario;
 import br.com.gr.bodyshock.repository.UsuarioRepository;
-import br.com.gr.bodyshock.service.UsuarioService;
+import br.com.gr.bodyshock.service.UserService;
 import br.com.gr.bodyshock.util.Criptografia;
 
 @Service
-public class UsuarioServiceImpl implements UsuarioService {
+public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;

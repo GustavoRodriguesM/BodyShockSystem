@@ -7,11 +7,11 @@ import org.springframework.data.domain.PageRequest;
 
 import br.com.gr.bodyshock.enums.Ativacao;
 import br.com.gr.bodyshock.enums.Status;
-import br.com.gr.bodyshock.exception.DietaTreinoException;
+import br.com.gr.bodyshock.exception.DietAndTrainingException;
 import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Avaliado;
 
-public interface AvaliacaoService extends AbstractService<Avaliacao, Long> {
+public interface PhysicalTestService extends AbstractService<Avaliacao, Long> {
 
 	void save(Avaliacao avaliacao, Avaliado avaliado, Status status);
 	
@@ -27,7 +27,7 @@ public interface AvaliacaoService extends AbstractService<Avaliacao, Long> {
 	
 	List<Avaliacao> findByStatus(Status status);
 	
-	void validate(Avaliacao avaliacao) throws DietaTreinoException;
+	void validate(Avaliacao avaliacao) throws DietAndTrainingException;
 
 	List<Avaliacao> findByPageRequest(PageRequest pageRequest);
 

@@ -16,9 +16,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.gr.bodyshock.enums.TipoDado;
 import br.com.gr.bodyshock.model.Avaliado;
 import br.com.gr.bodyshock.model.Dieta;
-import br.com.gr.bodyshock.service.AvaliadoService;
-import br.com.gr.bodyshock.service.DietaService;
-import br.com.gr.bodyshock.service.impl.DadoGraficoService;
+import br.com.gr.bodyshock.service.ClientService;
+import br.com.gr.bodyshock.service.DietService;
+import br.com.gr.bodyshock.service.impl.GraphicalDataService;
 import br.com.gr.bodyshock.validator.DietaValidator;
 
 @Controller
@@ -30,13 +30,13 @@ public class DietController extends AbstractController {
 	private static final String FEEDING_TIPS_PAGE = "dieta/feeding-tips";
 
 	@Autowired
-	private DietaService dietaService;
+	private DietService dietaService;
 
 	@Autowired
-	private AvaliadoService avaliadoService;
+	private ClientService avaliadoService;
 
 	@Autowired
-	private DadoGraficoService dadoGraficoService;
+	private GraphicalDataService dadoGraficoService;
 
 	@InitBinder("dieta")
 	private void initDietaBinder(WebDataBinder binder) {

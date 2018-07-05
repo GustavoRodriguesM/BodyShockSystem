@@ -5,7 +5,7 @@ import java.util.List;
 import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Relatorio;
 
-public interface RelatorioService extends AbstractService<Relatorio, Long> {
+public interface ReportService extends AbstractService<Relatorio, Long> {
 
 	void makePhysicalTestValidationReport(Avaliacao avaliacao);
 

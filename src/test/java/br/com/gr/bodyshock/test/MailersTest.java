@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.gr.bodyshock.model.Avaliado;
-import br.com.gr.bodyshock.service.AvaliadoService;
+import br.com.gr.bodyshock.service.ClientService;
 import br.com.gr.bodyshock.util.EnviaEmail;
 
 @RunWith(SpringRunner.class)
@@ -18,7 +18,7 @@ public class MailersTest {
 	private EnviaEmail enviaEmail;
 
 	@Autowired
-	private AvaliadoService avaliadoService;
+	private ClientService avaliadoService;
 
 	@Test
 	public void test() {

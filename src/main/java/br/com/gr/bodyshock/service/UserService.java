@@ -2,7 +2,7 @@ package br.com.gr.bodyshock.service;
 
 import br.com.gr.bodyshock.model.Usuario;
 
-public interface UsuarioService extends AbstractService<Usuario, Long> {
+public interface UserService extends AbstractService<Usuario, Long> {
 
 	void save(Usuario usuario, String role);
 

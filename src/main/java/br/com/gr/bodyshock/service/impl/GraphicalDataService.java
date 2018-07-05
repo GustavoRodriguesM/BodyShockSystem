@@ -12,7 +12,7 @@ import br.com.gr.bodyshock.model.DadoGrafico;
 import br.com.gr.bodyshock.repository.DadoGraficoRepository;
 
 @Service
-public class DadoGraficoService {
+public class GraphicalDataService {
 
 	@Autowired
 	private DadoGraficoRepository repository;

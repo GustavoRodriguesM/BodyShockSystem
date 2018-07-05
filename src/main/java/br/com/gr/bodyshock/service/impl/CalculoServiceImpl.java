@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import br.com.gr.bodyshock.enums.Sexo;
 import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Avaliado;
-import br.com.gr.bodyshock.service.CalculoService;
+import br.com.gr.bodyshock.service.PollockProtocolService;
 
 
 @Service
-public class CalculoServiceImpl implements CalculoService {
+public class CalculoServiceImpl implements PollockProtocolService {
 
 	private Double calculoDensidadeCorporal(Avaliado avaliado, Avaliacao avaliacao) {
 		Double densidadeCorporal = 0.0;

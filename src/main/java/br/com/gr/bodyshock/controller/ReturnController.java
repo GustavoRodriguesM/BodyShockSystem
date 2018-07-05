@@ -14,9 +14,9 @@ import br.com.gr.bodyshock.enums.Sexo;
 import br.com.gr.bodyshock.enums.Status;
 import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Avaliado;
-import br.com.gr.bodyshock.service.AvaliacaoService;
-import br.com.gr.bodyshock.service.AvaliadoService;
-import br.com.gr.bodyshock.service.PerimetrosService;
+import br.com.gr.bodyshock.service.PhysicalTestService;
+import br.com.gr.bodyshock.service.ClientService;
+import br.com.gr.bodyshock.service.PerimetersService;
 
 @Controller
 public class ReturnController extends AbstractController {
@@ -25,13 +25,13 @@ public class ReturnController extends AbstractController {
 	private static final String PHYSICAL_ASSESSMENT_RETURN_PAGE = "avaliacao/retorno";
 
 	@Autowired
-	private AvaliadoService avaliadoService;
+	private ClientService avaliadoService;
 
 	@Autowired
-	private AvaliacaoService avaliacaoService;
+	private PhysicalTestService avaliacaoService;
 
 	@Autowired
-	private PerimetrosService perimetrosService;
+	private PerimetersService perimetrosService;
 
 	@GetMapping(MAPPING_AVALIADO + "retorno")
 	public ModelAndView retornoForm() {

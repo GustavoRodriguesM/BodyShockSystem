@@ -13,14 +13,14 @@ import br.com.gr.bodyshock.enums.Sexo;
 import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Avaliado;
 import br.com.gr.bodyshock.model.Perimetros;
-import br.com.gr.bodyshock.service.CalculoService;
+import br.com.gr.bodyshock.service.PollockProtocolService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class PhysicalTestTest {
 	
 	@Autowired
-	private CalculoService calculoService;
+	private PollockProtocolService calculoService;
 	
 	@Test
 	public void fatPorcentageComparator() {

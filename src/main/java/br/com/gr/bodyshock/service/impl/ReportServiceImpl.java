@@ -10,10 +10,10 @@ import br.com.gr.bodyshock.enums.Status;
 import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Relatorio;
 import br.com.gr.bodyshock.repository.RelatorioRepository;
-import br.com.gr.bodyshock.service.RelatorioService;
+import br.com.gr.bodyshock.service.ReportService;
 
 @Service
-public class RelatorioServiceImpl implements RelatorioService {
+public class ReportServiceImpl implements ReportService {
 
 	@Autowired
 	private RelatorioRepository relatorioRepository;

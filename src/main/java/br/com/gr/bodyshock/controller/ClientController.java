@@ -15,14 +15,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.gr.bodyshock.enums.Ativacao;
 import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Avaliado;
-import br.com.gr.bodyshock.service.AnamneseService;
-import br.com.gr.bodyshock.service.AvaliacaoService;
-import br.com.gr.bodyshock.service.AvaliadoService;
-import br.com.gr.bodyshock.service.DietaService;
-import br.com.gr.bodyshock.service.PerimetrosService;
-import br.com.gr.bodyshock.service.TesteResistenciaService;
-import br.com.gr.bodyshock.service.TreinoService;
-import br.com.gr.bodyshock.service.UsuarioService;
+import br.com.gr.bodyshock.service.AnamnesisService;
+import br.com.gr.bodyshock.service.PhysicalTestService;
+import br.com.gr.bodyshock.service.ClientService;
+import br.com.gr.bodyshock.service.DietService;
+import br.com.gr.bodyshock.service.PerimetersService;
+import br.com.gr.bodyshock.service.ResistenceTestService;
+import br.com.gr.bodyshock.service.TrainingService;
+import br.com.gr.bodyshock.service.UserService;
 
 @Controller
 public class ClientController extends AbstractController {
@@ -31,28 +31,28 @@ public class ClientController extends AbstractController {
 	private static final String INDEX_PAGE = "avaliado/index";
 
 	@Autowired
-	private AvaliadoService avaliadoService;
+	private ClientService avaliadoService;
 
 	@Autowired
-	private DietaService dietaService;
+	private DietService dietaService;
 
 	@Autowired
-	private TreinoService treinoService;
+	private TrainingService treinoService;
 
 	@Autowired
-	private PerimetrosService perimetrosService;
+	private PerimetersService perimetrosService;
 
 	@Autowired
-	private AvaliacaoService avaliacaoService;
+	private PhysicalTestService avaliacaoService;
 
 	@Autowired
-	private TesteResistenciaService testeResistenciaService;
+	private ResistenceTestService testeResistenciaService;
 
 	@Autowired
-	private AnamneseService anamneseService;
+	private AnamnesisService anamneseService;
 
 	@Autowired
-	private UsuarioService usuarioService;
+	private UserService usuarioService;
 
 	@GetMapping(MAPPING_ADMIN + "avaliado")
 	public ModelAndView avaliados(Integer page) {

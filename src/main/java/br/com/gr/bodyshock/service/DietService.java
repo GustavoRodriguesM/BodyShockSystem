@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.com.gr.bodyshock.model.Dieta;
 
-public interface DietaService extends AbstractService<Dieta, String> {
+public interface DietService extends AbstractService<Dieta, String> {
 	List<String> findAllIds();
 
 	List<Dieta> findAllWithoutDefault();

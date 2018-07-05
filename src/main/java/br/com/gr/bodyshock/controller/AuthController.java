@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.gr.bodyshock.model.Usuario;
-import br.com.gr.bodyshock.service.UsuarioService;
+import br.com.gr.bodyshock.service.UserService;
 import br.com.gr.bodyshock.util.EnviaEmail;
 import br.com.gr.bodyshock.validator.UsuarioAlteraSenhaValidator;
 
@@ -31,7 +31,7 @@ public class AuthController extends AbstractController {
 	private EnviaEmail enviaEmail;
 
 	@Autowired
-	private UsuarioService usuarioService;
+	private UserService usuarioService;
 
 	@InitBinder(value = { "usuario" })
 	protected void initBinder(WebDataBinder binder) {

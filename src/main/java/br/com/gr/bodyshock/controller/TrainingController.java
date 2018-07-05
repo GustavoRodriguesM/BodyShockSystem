@@ -16,9 +16,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.gr.bodyshock.enums.TipoDado;
 import br.com.gr.bodyshock.model.Avaliado;
 import br.com.gr.bodyshock.model.Treino;
-import br.com.gr.bodyshock.service.AvaliadoService;
-import br.com.gr.bodyshock.service.TreinoService;
-import br.com.gr.bodyshock.service.impl.DadoGraficoService;
+import br.com.gr.bodyshock.service.ClientService;
+import br.com.gr.bodyshock.service.TrainingService;
+import br.com.gr.bodyshock.service.impl.GraphicalDataService;
 import br.com.gr.bodyshock.validator.TreinoValidator;
 
 @Controller
@@ -30,13 +30,13 @@ public class TrainingController extends AbstractController {
 	private static final String NEW_PAGE = "training/new";
 
 	@Autowired
-	private TreinoService treinoService;
+	private TrainingService treinoService;
 
 	@Autowired
-	private AvaliadoService avaliadoService;
+	private ClientService avaliadoService;
 
 	@Autowired
-	private DadoGraficoService dadoGraficoService;
+	private GraphicalDataService dadoGraficoService;
 
 	/*
 	 * 
