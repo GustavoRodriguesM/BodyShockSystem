@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.gr.bodyshock.enums.Sexo;
 import br.com.gr.bodyshock.enums.TipoAvaliacao;
-import br.com.gr.bodyshock.exception.HorarioException;
+import br.com.gr.bodyshock.exception.ScheduleException;
 import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Avaliado;
 import br.com.gr.bodyshock.model.Dieta;
@@ -233,7 +233,7 @@ public class AvaliadoServiceImpl implements AvaliadoService {
 	}
 
 	@Override
-	public void calculatesMeals(Avaliado avaliado) throws HorarioException {
+	public void calculatesMeals(Avaliado avaliado) throws ScheduleException {
 		List<Horario> horarios = new ArrayList<>();
 
 		if (avaliado.getHoraDorme() == 0)
@@ -264,7 +264,7 @@ public class AvaliadoServiceImpl implements AvaliadoService {
 		}
 
 		if (horarios.isEmpty())
-			throw new HorarioException();
+			throw new ScheduleException();
 
 		Collections.reverse(horarios);
 		avaliado.setHorarios(horarios);
@@ -329,7 +329,7 @@ public class AvaliadoServiceImpl implements AvaliadoService {
 
 	@Override
 	public void alterSchedule(Avaliado avaliado, Avaliacao avaliacao, Integer horaAcorda, Integer horaDorme)
-			throws HorarioException {
+			throws ScheduleException {
 		avaliado.setHoraAcorda(horaAcorda);
 		avaliado.setHoraDorme(horaDorme);
 

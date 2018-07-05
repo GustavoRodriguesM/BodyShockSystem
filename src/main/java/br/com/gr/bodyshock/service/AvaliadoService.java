@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.PageRequest;
 
-import br.com.gr.bodyshock.exception.HorarioException;
+import br.com.gr.bodyshock.exception.ScheduleException;
 import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Avaliado;
 import br.com.gr.bodyshock.model.Usuario;
@@ -27,7 +27,7 @@ public interface AvaliadoService extends AbstractService<Avaliado, Long> {
 	
 	void directsDietAndTrainig(Avaliado avaliado, Avaliacao avaliacao);
 	
-	void calculatesMeals(Avaliado aluno) throws HorarioException;
+	void calculatesMeals(Avaliado aluno) throws ScheduleException;
 	
 	void classifyResistenceTest(Avaliado aluno);
 	
@@ -37,5 +37,5 @@ public interface AvaliadoService extends AbstractService<Avaliado, Long> {
 
 	List<Avaliado> findByPageRequest(PageRequest pageRequest);
 
-	void alterSchedule(Avaliado avaliado, Avaliacao avaliacao, Integer horaAcorda, Integer horaDorme) throws HorarioException;
+	void alterSchedule(Avaliado avaliado, Avaliacao avaliacao, Integer horaAcorda, Integer horaDorme) throws ScheduleException;
 }

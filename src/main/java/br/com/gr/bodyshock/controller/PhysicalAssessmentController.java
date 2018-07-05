@@ -25,7 +25,7 @@ import br.com.gr.bodyshock.enums.Status;
 import br.com.gr.bodyshock.enums.TipoAvaliacao;
 import br.com.gr.bodyshock.enums.TipoDado;
 import br.com.gr.bodyshock.exception.DietaTreinoException;
-import br.com.gr.bodyshock.exception.HorarioException;
+import br.com.gr.bodyshock.exception.ScheduleException;
 import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Avaliado;
 import br.com.gr.bodyshock.service.AnamneseService;
@@ -153,7 +153,7 @@ public class PhysicalAssessmentController extends AbstractController {
 		} catch (DataIntegrityViolationException e) {
 			e.printStackTrace();
 			mensagem = this.errorMessage("Email duplicado!");
-		} catch (HorarioException e) {
+		} catch (ScheduleException e) {
 			e.printStackTrace();
 			mensagem = this.errorMessage("Horário de alimentação está fora dos padrões!");
 		} catch (RuntimeException e) {

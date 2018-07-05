@@ -1,6 +1,5 @@
 package br.com.gr.bodyshock.controller;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,8 +71,7 @@ public class ClientController extends AbstractController {
 		Avaliado avaliado = avaliadoService.findById(id);
 		List<String> dietas = dietaService.findAllIds();
 		List<String> treinos = treinoService.findAllIds();
-		Collections.reverse(dietas);
-		Collections.reverse(treinos);
+		
 		return this.modelAndView(SHOW_PAGE).addObject("avaliado", avaliado).addObject("dietas", dietas)
 				.addObject("treinos", treinos);
 	}
