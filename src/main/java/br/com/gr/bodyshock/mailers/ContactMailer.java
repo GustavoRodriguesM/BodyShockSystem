@@ -1,6 +1,13 @@
 package br.com.gr.bodyshock.mailers;
 
-import org.apache.commons.mail.HtmlEmail;
+import java.nio.charset.StandardCharsets;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import br.com.gr.bodyshock.wrapper.ContatoWrapper;
@@ -8,28 +15,21 @@ import br.com.gr.bodyshock.wrapper.ContatoWrapper;
 @Service
 public class ContactMailer extends AbstractMailer {
 
+	@Autowired
+	private JavaMailSender emailSender;
+
 	public void send(ContatoWrapper contatoWrapper) {
-		HtmlEmail email = new HtmlEmail();
-		email.setSSLOnConnect(true);
-		email.setHostName("smtp.gmail.com");
-		email.setSslSmtpPort("465");
-		email.setAuthentication(linkEmail, linkSenha);
+		MimeMessage message = emailSender.createMimeMessage();
 		try {
-			email.setFrom(contatoWrapper.getEmail(), contatoWrapper.getNome());
-			email.setDebug(true);
-			email.setSubject("Contato - BodyShock");
-
-			StringBuilder builder = new StringBuilder();
-			builder.append("Contato de " + contatoWrapper.getNome() + "<br/>Email: " + contatoWrapper.getEmail()
-					+ "<br/>Mensagem: " + contatoWrapper.getMensagem());
-
-			email.setHtmlMsg(builder.toString());
-			email.addTo(ownerEmail);
-			email.send();
-		} catch (Exception e) {
+			MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
+			helper.setTo(ownerEmail);
+			helper.setSubject("Contato - BodyShock");
+			helper.setText("Contato de " + contatoWrapper.getNome() + "<br/>Email: " + contatoWrapper.getEmail()
+					+ "<br/>Mensagem: " + contatoWrapper.getMensagem(), true);
+			emailSender.send(message);
+		}catch(MessagingException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 }

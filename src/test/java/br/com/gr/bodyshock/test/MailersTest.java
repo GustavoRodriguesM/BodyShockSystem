@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import br.com.gr.bodyshock.mailers.ForgotPasswordMailer;
+import br.com.gr.bodyshock.mailers.PhysicalTestAdminAlertMailer;
 import br.com.gr.bodyshock.mailers.PhysicalTestValidationMailer;
 import br.com.gr.bodyshock.mailers.RegisterConfirmationMailer;
 import br.com.gr.bodyshock.model.Avaliado;
@@ -23,6 +24,9 @@ public class MailersTest {
 	private PhysicalTestValidationMailer physicalTestValidationMailer;
 
 	@Autowired
+	private PhysicalTestAdminAlertMailer physicalTestAdminAlertMailer;
+	
+	@Autowired
 	private ForgotPasswordMailer forgotPasswordMailer;
 
 	@Autowired
@@ -30,11 +34,12 @@ public class MailersTest {
 
 	@Test
 	public void test() {
-		Avaliado avaliado = this.avaliadoService.findById(3l);
+		Avaliado avaliado = this.avaliadoService.findById(1l);
 
 		registerConfirmationMailer.send(avaliado, "12345678");
 		physicalTestValidationMailer.send(avaliado);
 		forgotPasswordMailer.send(avaliado.getUsuario());
+		physicalTestAdminAlertMailer.send(avaliado.getUsuario());
 	}
 
 }
