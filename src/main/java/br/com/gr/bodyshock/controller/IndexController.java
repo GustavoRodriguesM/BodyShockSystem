@@ -13,8 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.gr.bodyshock.enums.TipoDado;
+import br.com.gr.bodyshock.mailers.ContactMailer;
 import br.com.gr.bodyshock.service.impl.GraphicalDataService;
-import br.com.gr.bodyshock.util.EnviaEmail;
 import br.com.gr.bodyshock.validator.ContatoValidator;
 import br.com.gr.bodyshock.wrapper.ContatoWrapper;
 
@@ -25,7 +25,7 @@ public class IndexController extends AbstractController {
 	private GraphicalDataService dadoGraficoService;
 
 	@Autowired
-	private EnviaEmail enviaEmail;
+	private ContactMailer contactMailer;
 
 	private static final String INDEX_PAGE = "home/index";
 
@@ -47,7 +47,7 @@ public class IndexController extends AbstractController {
 		if (result.hasErrors())
 			return this.index(contatoWrapper);
 
-		this.enviaEmail.emailContato(contatoWrapper);
+		this.contactMailer.send(contatoWrapper);
 		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, "Contato enviado com sucesso!");
 		return this.redirect("/");
 	}

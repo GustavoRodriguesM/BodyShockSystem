@@ -6,16 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import br.com.gr.bodyshock.mailers.ForgotPasswordMailer;
+import br.com.gr.bodyshock.mailers.PhysicalTestValidationMailer;
+import br.com.gr.bodyshock.mailers.RegisterConfirmationMailer;
 import br.com.gr.bodyshock.model.Avaliado;
 import br.com.gr.bodyshock.service.ClientService;
-import br.com.gr.bodyshock.util.EnviaEmail;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MailersTest {
 
 	@Autowired
-	private EnviaEmail enviaEmail;
+	private RegisterConfirmationMailer registerConfirmationMailer;
+
+	@Autowired
+	private PhysicalTestValidationMailer physicalTestValidationMailer;
+
+	@Autowired
+	private ForgotPasswordMailer forgotPasswordMailer;
 
 	@Autowired
 	private ClientService avaliadoService;
@@ -24,9 +32,9 @@ public class MailersTest {
 	public void test() {
 		Avaliado avaliado = this.avaliadoService.findById(3l);
 
-		enviaEmail.confirmacaoCadastro(avaliado, "12345678");
-		enviaEmail.confirmacaoValidacaoAvaliacao(avaliado);
-		enviaEmail.redefinicaoSenha(avaliado.getUsuario());
+		registerConfirmationMailer.send(avaliado, "12345678");
+		physicalTestValidationMailer.send(avaliado);
+		forgotPasswordMailer.send(avaliado.getUsuario());
 	}
 
 }

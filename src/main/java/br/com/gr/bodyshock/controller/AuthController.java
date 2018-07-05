@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.gr.bodyshock.mailers.ForgotPasswordMailer;
 import br.com.gr.bodyshock.model.Usuario;
 import br.com.gr.bodyshock.service.UserService;
-import br.com.gr.bodyshock.util.EnviaEmail;
 import br.com.gr.bodyshock.validator.UsuarioAlteraSenhaValidator;
 
 @Controller
@@ -28,7 +28,7 @@ public class AuthController extends AbstractController {
 	private static final String RESTORE_PASSWORD_2_PAGE = "auth/redefineSenha";
 
 	@Autowired
-	private EnviaEmail enviaEmail;
+	private ForgotPasswordMailer forgotPasswordMailer;
 
 	@Autowired
 	private UserService usuarioService;
@@ -51,7 +51,7 @@ public class AuthController extends AbstractController {
 	@PostMapping("/redefine/senha")
 	public ModelAndView recebeEmail(@RequestParam String email, RedirectAttributes attributes) {
 		Usuario usuario = usuarioService.findByEmail(email);
-		enviaEmail.redefinicaoSenha(usuario);
+		forgotPasswordMailer.send(usuario);
 		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE,
 				this.successMessage("Mensagem enviada para seu email caso tenha sido encontrado!"));
 		return this.redirect("/login");

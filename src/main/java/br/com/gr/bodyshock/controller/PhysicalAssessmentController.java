@@ -26,6 +26,8 @@ import br.com.gr.bodyshock.enums.TipoAvaliacao;
 import br.com.gr.bodyshock.enums.TipoDado;
 import br.com.gr.bodyshock.exception.DietAndTrainingException;
 import br.com.gr.bodyshock.exception.ScheduleException;
+import br.com.gr.bodyshock.mailers.PhysicalTestValidationMailer;
+import br.com.gr.bodyshock.mailers.RegisterConfirmationMailer;
 import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Avaliado;
 import br.com.gr.bodyshock.service.AnamnesisService;
@@ -36,7 +38,6 @@ import br.com.gr.bodyshock.service.ReportService;
 import br.com.gr.bodyshock.service.ResistenceTestService;
 import br.com.gr.bodyshock.service.UserService;
 import br.com.gr.bodyshock.service.impl.GraphicalDataService;
-import br.com.gr.bodyshock.util.EnviaEmail;
 import br.com.gr.bodyshock.util.HashGenerator;
 import br.com.gr.bodyshock.validator.AvaliadoAvaliacaoWrapperValidator;
 import br.com.gr.bodyshock.wrapper.AvaliadoAvaliacaoWrapper;
@@ -76,9 +77,13 @@ public class PhysicalAssessmentController extends AbstractController {
 	private PerimetersService perimetrosService;
 
 	@Autowired
-	private EnviaEmail enviaEmail;
+	private PhysicalTestValidationMailer physicalTestValidationMailer;
+	
+	@Autowired
+	private RegisterConfirmationMailer registerConfirmationMailer;
 
 	private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+	
 
 	@InitBinder("avaliadoAvaliacaoWrapper")
 	protected void initAutoAvaliadoBinder(WebDataBinder binder) {
@@ -147,7 +152,7 @@ public class PhysicalAssessmentController extends AbstractController {
 			relatorioService.makeRegistrationReport(avaliacao);
 
 			// enviaEmail.avisoAvaliacaoAdministrador(avaliado.getUsuario());
-			enviaEmail.confirmacaoCadastro(avaliado, password);
+			this.registerConfirmationMailer.send(avaliado, password);
 			mensagem = this.successMessage("Avaliação cadastrada com sucesso! Consulte seu email.");
 
 		} catch (DataIntegrityViolationException e) {
@@ -190,7 +195,7 @@ public class PhysicalAssessmentController extends AbstractController {
 			avaliacaoService.validate(avaliacao);
 			relatorioService.makePhysicalTestValidationReport(avaliacao);
 			if (avaliacao.getStatus() == Status.PAGO)
-				enviaEmail.confirmacaoValidacaoAvaliacao(avaliacao.getAvaliado());
+				this.physicalTestValidationMailer.send(avaliacao.getAvaliado());
 			mensagem = this.successMessage();
 		} catch (DietAndTrainingException e) {
 			mensagem = this.errorMessage("É necessário cadastrar uma dieta e um treino antes de ativar a avaliação.");

@@ -30,13 +30,13 @@ public class TrainingController extends AbstractController {
 	private static final String NEW_PAGE = "training/new";
 
 	@Autowired
-	private TrainingService treinoService;
+	private TrainingService trainingService;
 
 	@Autowired
-	private ClientService avaliadoService;
+	private ClientService clientService;
 
 	@Autowired
-	private GraphicalDataService dadoGraficoService;
+	private GraphicalDataService graphicalDataService;
 
 	/*
 	 * 
@@ -56,13 +56,13 @@ public class TrainingController extends AbstractController {
 
 	@GetMapping(MAPPING_ADMIN + "treino/form/{id}")
 	public ModelAndView formAlteracao(@PathVariable String id) {
-		Treino treino = this.treinoService.findById(id);
+		Treino treino = this.trainingService.findById(id);
 		return this.modelAndView(NEW_PAGE).addObject("treino", treino);
 	}
 
 	@GetMapping(MAPPING_ADMIN + "treino")
 	public ModelAndView index() {
-		return this.modelAndView(INDEX_PAGE).addObject("treinos", this.treinoService.findAllWithoutDefault());
+		return this.modelAndView(INDEX_PAGE).addObject("treinos", this.trainingService.findAllWithoutDefault());
 	}
 
 	@PostMapping(MAPPING_ADMIN + "treino")
@@ -71,7 +71,7 @@ public class TrainingController extends AbstractController {
 			return form(treino);
 
 		try {
-			treinoService.save(treino);
+			trainingService.save(treino);
 			attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, this.successMessage());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -85,8 +85,8 @@ public class TrainingController extends AbstractController {
 	public ModelAndView remove(@PathVariable String id, RedirectAttributes attributes) {
 		String mensagem = null;
 		try {
-			Treino treino = this.treinoService.findById(id);
-			this.treinoService.delete(treino);
+			Treino treino = this.trainingService.findById(id);
+			this.trainingService.delete(treino);
 			mensagem = this.successMessage();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -102,16 +102,16 @@ public class TrainingController extends AbstractController {
 	 */
 	@GetMapping(MAPPING_AVALIADO + "treino")
 	public ModelAndView treinoPOST() {
-		dadoGraficoService.save(TipoDado.PAGINA_TREINO);
-		Treino training = avaliadoService.findByUser(getUser()).getTreino();
+		graphicalDataService.save(TipoDado.PAGINA_TREINO);
+		Treino training = clientService.findByUser(getUser()).getTreino();
 
 		return this.modelAndView(TRAINING_TIPS_PAGE).addObject("training", training);
 	}
 
 	@PostMapping(MAPPING_AVALIADO + "treino/adicionaDia")
 	public ModelAndView adicionaDiaTreino(RedirectAttributes attributes) {
-		Avaliado avaliado = avaliadoService.findByUser(getUser());
-		avaliadoService.addDayTraining(avaliado);
+		Avaliado avaliado = clientService.findByUser(getUser());
+		clientService.addDayTraining(avaliado);
 
 		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, this.successMessage("Treino finalizado com sucesso."));
 		return this.redirect("/avaliado/treino");
