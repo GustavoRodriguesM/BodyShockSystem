@@ -12,7 +12,7 @@ import br.com.gr.bodyshock.model.Role;
 import br.com.gr.bodyshock.model.Usuario;
 import br.com.gr.bodyshock.repository.UsuarioRepository;
 import br.com.gr.bodyshock.service.UserService;
-import br.com.gr.bodyshock.util.Criptografia;
+import br.com.gr.bodyshock.util.HashGenerator;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
 	public void changePassword(Usuario usuario, String senha) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		usuario.setSenha(encoder.encode(senha));
-		usuario.setToken(Criptografia.md5(usuario.getEmail() + usuario.getSenha().hashCode()));
+		usuario.setToken(HashGenerator.md5(usuario.getEmail() + usuario.getSenha().hashCode()));
 		usuarioRepository.save(usuario);
 	}
 
@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
 			usuario.setDataCadastro(Calendar.getInstance());
 
 		usuario.setRoles(Arrays.asList(new Role(role)));
-		usuario.setToken(Criptografia.md5(usuario.getEmail() + usuario.getSenha().hashCode()));
+		usuario.setToken(HashGenerator.md5(usuario.getEmail() + usuario.getSenha().hashCode()));
 		usuarioRepository.save(usuario);
 	}
 

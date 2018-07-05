@@ -29,15 +29,15 @@ import br.com.gr.bodyshock.exception.ScheduleException;
 import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Avaliado;
 import br.com.gr.bodyshock.service.AnamnesisService;
-import br.com.gr.bodyshock.service.PhysicalTestService;
 import br.com.gr.bodyshock.service.ClientService;
 import br.com.gr.bodyshock.service.PerimetersService;
+import br.com.gr.bodyshock.service.PhysicalTestService;
 import br.com.gr.bodyshock.service.ReportService;
 import br.com.gr.bodyshock.service.ResistenceTestService;
 import br.com.gr.bodyshock.service.UserService;
 import br.com.gr.bodyshock.service.impl.GraphicalDataService;
 import br.com.gr.bodyshock.util.EnviaEmail;
-import br.com.gr.bodyshock.util.GeraSenha;
+import br.com.gr.bodyshock.util.HashGenerator;
 import br.com.gr.bodyshock.validator.AvaliadoAvaliacaoWrapperValidator;
 import br.com.gr.bodyshock.wrapper.AvaliadoAvaliacaoWrapper;
 
@@ -121,7 +121,7 @@ public class PhysicalAssessmentController extends AbstractController {
 
 		String mensagem = null;
 
-		String senha = GeraSenha.getAlphanumericPassword(7);
+		String password = HashGenerator.getAlphanumericPassword(7);
 
 		try {
 
@@ -134,7 +134,7 @@ public class PhysicalAssessmentController extends AbstractController {
 			this.avaliadoService.calculatesIdealFatPercentage(avaliado, avaliacao);
 			this.avaliadoService.classifyResistenceTest(avaliado);
 
-			avaliado.getUsuario().setSenha(this.encoder.encode(senha));
+			avaliado.getUsuario().setSenha(this.encoder.encode(password));
 			usuarioService.save(avaliado.getUsuario(), "ROLE_AVALIADO");
 
 			anamneseService.save(avaliado.getAnamnese());
@@ -147,7 +147,7 @@ public class PhysicalAssessmentController extends AbstractController {
 			relatorioService.makeRegistrationReport(avaliacao);
 
 			// enviaEmail.avisoAvaliacaoAdministrador(avaliado.getUsuario());
-			enviaEmail.confirmacaoCadastro(avaliado, senha);
+			enviaEmail.confirmacaoCadastro(avaliado, password);
 			mensagem = this.successMessage("Avaliação cadastrada com sucesso! Consulte seu email.");
 
 		} catch (DataIntegrityViolationException e) {
