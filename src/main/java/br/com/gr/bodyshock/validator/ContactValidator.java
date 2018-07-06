@@ -4,20 +4,20 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import br.com.gr.bodyshock.wrapper.ContatoWrapper;
+import br.com.gr.bodyshock.wrapper.ContactWrapper;
 
-public class ContatoValidator extends AbstractValidator implements Validator {
+public class ContactValidator extends AbstractValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return ContatoWrapper.class.isAssignableFrom(clazz);
+		return ContactWrapper.class.isAssignableFrom(clazz);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nome", FIELD_REQUIRED);
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", FIELD_REQUIRED);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", FIELD_REQUIRED);
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "mensagem", FIELD_REQUIRED);
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "message", FIELD_REQUIRED);
 	}
 
 }

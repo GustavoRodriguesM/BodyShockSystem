@@ -147,7 +147,7 @@
 			<div id="fh5co-contact">
 				<div class="container">
 					<form:form action="/contato" method="post"
-						modelAttribute="contatoWrapper">
+						modelAttribute="contactWrapper">
 						<div class="row">
 							<div class="col-md-6 animate-box">
 								<h3 class="section-title">Portal de contato</h3>
@@ -159,7 +159,7 @@
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
-											<form:input type="text" path="nome" class="form-control"
+											<form:input type="text" path="name" class="form-control"
 												placeholder="Nome" />
 										</div>
 									</div>
@@ -171,7 +171,7 @@
 									</div>
 									<div class="col-md-12">
 										<div class="form-group">
-											<form:textarea path="mensagem" class="form-control" id=""
+											<form:textarea path="message" class="form-control" id=""
 												cols="30" rows="7" placeholder="Mensagem" />
 										</div>
 									</div>

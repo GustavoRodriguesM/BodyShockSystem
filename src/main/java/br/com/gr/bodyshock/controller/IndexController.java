@@ -15,8 +15,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.com.gr.bodyshock.enums.TipoDado;
 import br.com.gr.bodyshock.mailers.ContactMailer;
 import br.com.gr.bodyshock.service.impl.GraphicalDataService;
-import br.com.gr.bodyshock.validator.ContatoValidator;
-import br.com.gr.bodyshock.wrapper.ContatoWrapper;
+import br.com.gr.bodyshock.validator.ContactValidator;
+import br.com.gr.bodyshock.wrapper.ContactWrapper;
 
 @Controller
 public class IndexController extends AbstractController {
@@ -31,23 +31,23 @@ public class IndexController extends AbstractController {
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		binder.addValidators(new ContatoValidator());
+		binder.addValidators(new ContactValidator());
 	}
 
 	@GetMapping("")
-	public ModelAndView index(ContatoWrapper contatoWrapper) {
+	public ModelAndView index(ContactWrapper contactWrapper) {
 		dadoGraficoService.save(TipoDado.PAGINA_HOME);
 		return this.modelAndView(INDEX_PAGE);
 	}
 
 	@PostMapping("/contato")
-	public ModelAndView contato(@Valid ContatoWrapper contatoWrapper, BindingResult result,
+	public ModelAndView contato(@Valid ContactWrapper contactWrapper, BindingResult result,
 			RedirectAttributes attributes) {
 
 		if (result.hasErrors())
-			return this.index(contatoWrapper);
+			return this.index(contactWrapper);
 
-		this.contactMailer.send(contatoWrapper);
+		this.contactMailer.send(contactWrapper);
 		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, "Contato enviado com sucesso!");
 		return this.redirect("/");
 	}
