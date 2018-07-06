@@ -76,7 +76,7 @@ public class ReturnController extends AbstractController {
 			mensagem = this.errorMessage();
 		}
 
-		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, mensagem);
+		attributes.addFlashAttribute(SWEETMESSAGE_TAG, mensagem);
 		return this.redirect("/avaliado/dashboard");
 	}
 

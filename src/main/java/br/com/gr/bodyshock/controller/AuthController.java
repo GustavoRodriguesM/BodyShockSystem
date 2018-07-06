@@ -52,7 +52,7 @@ public class AuthController extends AbstractController {
 	public ModelAndView recebeEmail(@RequestParam String email, RedirectAttributes attributes) {
 		Usuario usuario = usuarioService.findByEmail(email);
 		forgotPasswordMailer.send(usuario);
-		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE,
+		attributes.addFlashAttribute(SWEETMESSAGE_TAG,
 				this.successMessage("Mensagem enviada para seu email caso tenha sido encontrado!"));
 		return this.redirect("/login");
 	}
@@ -80,7 +80,7 @@ public class AuthController extends AbstractController {
 			mensagem = this.errorMessage();
 		}
 
-		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, mensagem);
+		attributes.addFlashAttribute(SWEETMESSAGE_TAG, mensagem);
 		return this.redirect("/login");
 	}
 

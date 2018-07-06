@@ -48,7 +48,7 @@ public class IndexController extends AbstractController {
 			return this.index(contactWrapper);
 
 		this.contactMailer.send(contactWrapper);
-		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, "Contato enviado com sucesso!");
+		attributes.addFlashAttribute(SWEETMESSAGE_TAG, "Contato enviado com sucesso!");
 		return this.redirect("/");
 	}
 

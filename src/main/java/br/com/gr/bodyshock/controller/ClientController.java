@@ -97,7 +97,7 @@ public class ClientController extends AbstractController {
 			mensagem = this.errorMessage("Erro ao deletar avaliado.");
 		}
 
-		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, mensagem);
+		attributes.addFlashAttribute(SWEETMESSAGE_TAG, mensagem);
 		return this.redirect("/dashboard");
 	}
 
@@ -117,7 +117,7 @@ public class ClientController extends AbstractController {
 			mensagem = this.errorMessage();
 		}
 
-		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, mensagem);
+		attributes.addFlashAttribute(SWEETMESSAGE_TAG, mensagem);
 		return this.redirect("/dashboard");
 	}
 	
@@ -135,7 +135,7 @@ public class ClientController extends AbstractController {
 			mensagem = this.errorMessage();
 		}
 
-		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, mensagem);
+		attributes.addFlashAttribute(SWEETMESSAGE_TAG, mensagem);
 		return this.redirect("/dashboard");
 	}
 	

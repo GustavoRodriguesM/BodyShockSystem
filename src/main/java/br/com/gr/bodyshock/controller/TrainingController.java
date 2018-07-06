@@ -72,10 +72,10 @@ public class TrainingController extends AbstractController {
 
 		try {
 			trainingService.save(treino);
-			attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, this.successMessage());
+			attributes.addFlashAttribute(SWEETMESSAGE_TAG, this.successMessage());
 		} catch (Exception e) {
 			e.printStackTrace();
-			attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, this.errorMessage());
+			attributes.addFlashAttribute(SWEETMESSAGE_TAG, this.errorMessage());
 		}
 
 		return this.redirect("/admin/treino");
@@ -92,7 +92,7 @@ public class TrainingController extends AbstractController {
 			e.printStackTrace();
 			mensagem = this.errorMessage();
 		}
-		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, mensagem);
+		attributes.addFlashAttribute(SWEETMESSAGE_TAG, mensagem);
 
 		return this.redirect("/admin/treino");
 	}
@@ -113,7 +113,7 @@ public class TrainingController extends AbstractController {
 		Avaliado avaliado = clientService.findByUser(getUser());
 		clientService.addDayTraining(avaliado);
 
-		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, this.successMessage("Treino finalizado com sucesso."));
+		attributes.addFlashAttribute(SWEETMESSAGE_TAG, this.successMessage("Treino finalizado com sucesso."));
 		return this.redirect("/avaliado/treino");
 	}
 

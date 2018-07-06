@@ -70,7 +70,7 @@ public class DietController extends AbstractController {
 			e.printStackTrace();
 			mensagem = this.errorMessage();
 		}
-		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, mensagem);
+		attributes.addFlashAttribute(SWEETMESSAGE_TAG, mensagem);
 
 		return this.redirect("/admin/dieta");
 	}
@@ -90,7 +90,7 @@ public class DietController extends AbstractController {
 			mensagem = this.errorMessage();
 		}
 
-		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, mensagem);
+		attributes.addFlashAttribute(SWEETMESSAGE_TAG, mensagem);
 		return this.redirect("/admin/dieta");
 	}
 

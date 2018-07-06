@@ -17,10 +17,10 @@ public abstract class AbstractController {
 
 	Logger LOGGER = LoggerFactory.getLogger(AbstractController.class);
 	
-	private static final String MENSAGEM_SUCESSO = "Ação realizada com sucesso!";
-	private static final String MENSAGEM_ERRO = "Erro ao executar ação!";
+	private static final String SUCCESS_MESSAGE = "Ação realizada com sucesso!";
+	private static final String ERROR_MESSAGE = "Erro ao executar ação!";
 	
-	static final String CAMPO_SWEETMESSAGE = "sweetAlert";
+	static final String SWEETMESSAGE_TAG = "sweetAlert";
 	static final String ROLE_PREFIX = "ROLE_";
 	static final String MAPPING_ADMIN = "admin/";
 	static final String MAPPING_AVALIADO = "avaliado/";
@@ -29,7 +29,7 @@ public abstract class AbstractController {
 
 	protected String successMessage() {
 		try {
-			return this.sweetAlertMessage.showMessage(MENSAGEM_SUCESSO, TypeMessage.SUCCESS);
+			return this.sweetAlertMessage.showMessage(SUCCESS_MESSAGE, TypeMessage.SUCCESS);
 		} catch (RapidMessageException e) {
 			e.printStackTrace();
 			return null;
@@ -38,7 +38,7 @@ public abstract class AbstractController {
 
 	protected String errorMessage() {
 		try {
-			return this.sweetAlertMessage.showMessage(MENSAGEM_ERRO, TypeMessage.DANGER);
+			return this.sweetAlertMessage.showMessage(ERROR_MESSAGE, TypeMessage.DANGER);
 		} catch (RapidMessageException e) {
 			e.printStackTrace();
 			return null;

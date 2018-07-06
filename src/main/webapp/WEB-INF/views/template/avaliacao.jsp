@@ -325,88 +325,106 @@
 		class="form-control" />
 </div>
 
-<div class="form-group">
-	<label>Antebraço Direito</label>
-	<p class="alert-warning text-center">
-		<form:errors path="avaliacao.perimetros.anteBracoD" />
-	</p>
-	<form:input path="avaliacao.perimetros.anteBracoD"
-		onkeyup="validar(this,'num')"
-		placeholder="Digite a medida do seu antebraço direito em centimetros"
-		class="form-control" />
-</div>
-<div class="form-group">
-	<label>Antebraço Esquerdo</label>
-	<p class="alert-warning text-center">
-		<form:errors path="avaliacao.perimetros.anteBracoE" />
-	</p>
-	<form:input path="avaliacao.perimetros.anteBracoE"
-		onkeyup="validar(this,'num')"
-		placeholder="Digite a medida do seu antebraço esquerdo em centimetros"
-		class="form-control" />
+<div class="row">
+
+	<div class="col-md-6">
+		<label>Antebraço Esquerdo</label>
+		<p class="alert-warning text-center">
+			<form:errors path="avaliacao.perimetros.anteBracoE" />
+		</p>
+		<form:input path="avaliacao.perimetros.anteBracoE"
+			onkeyup="validar(this,'num')"
+			placeholder="Digite a medida do seu antebraço esquerdo em centimetros"
+			class="form-control" />
+	</div>
+	<div class="col-md-6">
+		<label>Antebraço Direito</label>
+		<p class="alert-warning text-center">
+			<form:errors path="avaliacao.perimetros.anteBracoD" />
+		</p>
+		<form:input path="avaliacao.perimetros.anteBracoD"
+			onkeyup="validar(this,'num')"
+			placeholder="Digite a medida do seu antebraço direito em centimetros"
+			class="form-control" />
+	</div>
+
 </div>
 
-<div class="form-group">
-	<label>Bíceps Direito</label>
-	<p class="alert-warning text-center">
-		<form:errors path="avaliacao.perimetros.bicepsD" />
-	</p>
-	<form:input path="avaliacao.perimetros.bicepsD"
-		onkeyup="validar(this,'num')"
-		placeholder="Digite a medida do seu bíceps direito em centimetros"
-		class="form-control" />
-</div>
-<div class="form-group">
-	<label>Bíceps Esquerdo</label>
-	<p class="alert-warning text-center">
-		<form:errors path="avaliacao.perimetros.bicepsE" />
-	</p>
-	<form:input path="avaliacao.perimetros.bicepsE"
-		onkeyup="validar(this,'num')"
-		placeholder="Digite a medida do seu bíceps em centimetros"
-		class="form-control" />
+<div class="row">
+
+	<div class="col-md-6">
+
+		<label>Bíceps Esquerdo</label>
+		<p class="alert-warning text-center">
+			<form:errors path="avaliacao.perimetros.bicepsE" />
+		</p>
+		<form:input path="avaliacao.perimetros.bicepsE"
+			onkeyup="validar(this,'num')"
+			placeholder="Digite a medida do seu bíceps em centimetros"
+			class="form-control" />
+
+	</div>
+	<div class="col-md-6">
+		<label>Bíceps Direito</label>
+		<p class="alert-warning text-center">
+			<form:errors path="avaliacao.perimetros.bicepsD" />
+		</p>
+		<form:input path="avaliacao.perimetros.bicepsD"
+			onkeyup="validar(this,'num')"
+			placeholder="Digite a medida do seu bíceps direito em centimetros"
+			class="form-control" />
+	</div>
+
 </div>
 
-<div class="form-group">
-	<label>Coxa Direita</label>
-	<p class="alert-warning text-center">
-		<form:errors path="avaliacao.perimetros.coxaD" />
-	</p>
-	<form:input path="avaliacao.perimetros.coxaD"
-		onkeyup="validar(this,'num')"
-		placeholder="Digite a medida da sua coxa direita em centimetros"
-		class="form-control" />
-</div>
-<div class="form-group">
-	<label>Coxa Esquerda</label>
-	<p class="alert-warning text-center">
-		<form:errors path="avaliacao.perimetros.coxaE" />
-	</p>
-	<form:input path="avaliacao.perimetros.coxaE"
-		onkeyup="validar(this,'num')"
-		placeholder="Digite a medida da sua coxa esquerda em centimetros"
-		class="form-control" />
+<div class="row">
+
+	<div class="col-md-6">
+		<label>Coxa Esquerda</label>
+		<p class="alert-warning text-center">
+			<form:errors path="avaliacao.perimetros.coxaE" />
+		</p>
+		<form:input path="avaliacao.perimetros.coxaE"
+			onkeyup="validar(this,'num')"
+			placeholder="Digite a medida da sua coxa esquerda em centimetros"
+			class="form-control" />
+	</div>
+	<div class="col-md-6">
+		<label>Coxa Direita</label>
+		<p class="alert-warning text-center">
+			<form:errors path="avaliacao.perimetros.coxaD" />
+		</p>
+		<form:input path="avaliacao.perimetros.coxaD"
+			onkeyup="validar(this,'num')"
+			placeholder="Digite a medida da sua coxa direita em centimetros"
+			class="form-control" />
+	</div>
+
 </div>
 
-<div class="form-group">
-	<label>Panturrilha Direita</label>
-	<p class="alert-warning text-center">
-		<form:errors path="avaliacao.perimetros.panturrilhaD" />
-	</p>
-	<form:input path="avaliacao.perimetros.panturrilhaD"
-		onkeyup="validar(this,'num')"
-		placeholder="Digite a medida da sua panturrilha direita em centimetros"
-		class="form-control" />
-</div>
-<div class="form-group">
-	<label>Panturrilha Esquerda</label>
-	<p class="alert-warning text-center">
-		<form:errors path="avaliacao.perimetros.panturrilhaE" />
-	</p>
-	<form:input path="avaliacao.perimetros.panturrilhaE"
-		onkeyup="validar(this,'num')"
-		placeholder="Digite a medida da sua panturrilha esquerda em centimetros"
-		class="form-control" />
+<div class="row">
+
+	<div class="col-md-6">
+		<label>Panturrilha Esquerda</label>
+		<p class="alert-warning text-center">
+			<form:errors path="avaliacao.perimetros.panturrilhaE" />
+		</p>
+		<form:input path="avaliacao.perimetros.panturrilhaE"
+			onkeyup="validar(this,'num')"
+			placeholder="Digite a medida da sua panturrilha esquerda em centimetros"
+			class="form-control" />
+	</div>
+	<div class="col-md-6">
+		<label>Panturrilha Direita</label>
+		<p class="alert-warning text-center">
+			<form:errors path="avaliacao.perimetros.panturrilhaD" />
+		</p>
+		<form:input path="avaliacao.perimetros.panturrilhaD"
+			onkeyup="validar(this,'num')"
+			placeholder="Digite a medida da sua panturrilha direita em centimetros"
+			class="form-control" />
+	</div>
+
 </div>
 
 

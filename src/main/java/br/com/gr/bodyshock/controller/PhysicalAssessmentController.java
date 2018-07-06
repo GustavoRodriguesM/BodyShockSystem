@@ -167,7 +167,7 @@ public class PhysicalAssessmentController extends AbstractController {
 					"Foi impossivel realizar os calculos da sua avaliação! Cadastre dados verdadeiros sobre seu corpo.");
 		}
 
-		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, mensagem);
+		attributes.addFlashAttribute(SWEETMESSAGE_TAG, mensagem);
 		return this.redirect("../login");
 
 	}
@@ -201,7 +201,7 @@ public class PhysicalAssessmentController extends AbstractController {
 			mensagem = this.errorMessage("É necessário cadastrar uma dieta e um treino antes de ativar a avaliação.");
 		}
 
-		attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, mensagem);
+		attributes.addFlashAttribute(SWEETMESSAGE_TAG, mensagem);
 		return this.redirect("/admin/avaliacao");
 	}
 
@@ -231,10 +231,10 @@ public class PhysicalAssessmentController extends AbstractController {
 			this.avaliacaoService.update(avaliacao);
 			this.avaliadoService.update(avaliado);
 
-			attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, this.successMessage());
+			attributes.addFlashAttribute(SWEETMESSAGE_TAG, this.successMessage());
 		} catch (Exception e) {
 			e.printStackTrace();
-			attributes.addFlashAttribute(CAMPO_SWEETMESSAGE, this.errorMessage());
+			attributes.addFlashAttribute(SWEETMESSAGE_TAG, this.errorMessage());
 		}
 
 		return this.redirect("/admin/avaliacao/" + avaliacao.getId());
