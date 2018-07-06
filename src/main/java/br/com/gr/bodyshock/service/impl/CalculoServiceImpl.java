@@ -47,11 +47,13 @@ public class CalculoServiceImpl implements PollockProtocolService {
 		return Double.parseDouble(s);
 	}
 
+	@Override
 	public void calculaPorcentagemGorduraAdipometro(Avaliado avaliado, Avaliacao avaliacao) {
 		calculoDensidadeCorporal(avaliado, avaliacao);
 		calculoPorcentagemGordura(avaliado, avaliacao);
 	}
 
+	@Override
 	public void calculaPorcentagemGorduraFitaMetrica(Avaliado avaliado, Avaliacao avaliacao) {
 		double resultado = 0;
 		if (avaliado.getSexo() == Sexo.MASCULINO)

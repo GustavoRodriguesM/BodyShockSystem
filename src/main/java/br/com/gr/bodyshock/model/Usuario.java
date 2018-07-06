@@ -80,16 +80,16 @@ public class Usuario implements UserDetails {
 		this.token = token;
 	}
 
+	public Usuario getUser() {
+		return this;
+	}
+
 	public Calendar getDataCadastro() {
 		return dataCadastro;
 	}
 
 	public void setDataCadastro(Calendar dataCadastro) {
 		this.dataCadastro = dataCadastro;
-	}
-
-	public Usuario getUser() {
-		return this;
 	}
 
 	public List<Role> getRoles() {

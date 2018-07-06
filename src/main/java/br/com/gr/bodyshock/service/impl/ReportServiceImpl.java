@@ -20,7 +20,7 @@ public class ReportServiceImpl implements ReportService {
 
 	@Override
 	public List<Relatorio> findLastFive() {
-		return (List<Relatorio>) this.relatorioRepository.findByLimit(5);
+		return this.relatorioRepository.findByLimit(5);
 	}
 
 	@Override

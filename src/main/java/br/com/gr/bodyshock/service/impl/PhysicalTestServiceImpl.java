@@ -44,7 +44,7 @@ public class PhysicalTestServiceImpl implements PhysicalTestService {
 
 	@Override
 	public List<Avaliacao> findByStatus(Status status) {
-		return (List<Avaliacao>) this.avaliacaoRepository.findAllByStatus(status);
+		return this.avaliacaoRepository.findAllByStatus(status);
 	}
 
 	@Override

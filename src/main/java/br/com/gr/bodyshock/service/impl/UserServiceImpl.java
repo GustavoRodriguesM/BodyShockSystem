@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 	public void save(Usuario usuario, String role) {
 		if (usuario.getId() == null)
 			usuario.setDataCadastro(Calendar.getInstance());
-
+		
 		usuario.setRoles(Arrays.asList(new Role(role)));
 		usuario.setToken(HashGenerator.md5(usuario.getEmail() + usuario.getSenha().hashCode()));
 		usuarioRepository.save(usuario);
