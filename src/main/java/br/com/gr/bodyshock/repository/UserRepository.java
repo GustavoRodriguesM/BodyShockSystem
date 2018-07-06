@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import br.com.gr.bodyshock.model.Usuario;
 
-public interface UsuarioRepository extends CrudRepository<Usuario, Long>{
+public interface UserRepository extends CrudRepository<Usuario, Long>{
 
 	Usuario findByEmail(String email);
 

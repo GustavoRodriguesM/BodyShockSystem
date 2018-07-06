@@ -8,7 +8,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import br.com.gr.bodyshock.model.Avaliado;
 import br.com.gr.bodyshock.model.Usuario;
 
-public interface AvaliadoRepository extends PagingAndSortingRepository<Avaliado, Long>{
+public interface ClientRepository extends PagingAndSortingRepository<Avaliado, Long>{
 	
 	@Query("select new br.com.gr.bodyshock.model.Avaliado(a.id, a.usuario) from Avaliado a")
 	List<Avaliado> findAllJustName();

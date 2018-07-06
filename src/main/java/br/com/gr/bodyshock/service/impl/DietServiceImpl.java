@@ -6,47 +6,47 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.gr.bodyshock.model.Dieta;
-import br.com.gr.bodyshock.repository.DietaRepository;
+import br.com.gr.bodyshock.repository.DietRepository;
 import br.com.gr.bodyshock.service.DietService;
 
 @Service
 public class DietServiceImpl implements DietService {
 
 	@Autowired
-	private DietaRepository dietaRepository;
+	private DietRepository dietRepository;
 
 	@Override
 	public void save(Dieta dieta) {
-		this.dietaRepository.save(dieta);
+		this.dietRepository.save(dieta);
 	}
 
 	@Override
 	public void update(Dieta dieta) {
-		this.dietaRepository.save(dieta);
+		this.dietRepository.save(dieta);
 	}
 
 	@Override
 	public List<Dieta> findAll() {
-		return (List<Dieta>) this.dietaRepository.findAll();
+		return (List<Dieta>) this.dietRepository.findAll();
 	}
 
 	@Override
 	public Dieta findById(String id) {
-		return this.dietaRepository.findById(id).get();
+		return this.dietRepository.findById(id).get();
 	}
 
 	@Override
 	public void delete(Dieta dieta) {
-		this.dietaRepository.delete(dieta);
+		this.dietRepository.delete(dieta);
 	}
 
 	@Override
 	public List<Dieta> findAllWithoutDefault() {
-		return this.dietaRepository.findByPadrao(false);
+		return this.dietRepository.findByPadrao(false);
 	}
 
 	@Override
 	public List<String> findAllIds() {
-		return this.dietaRepository.findAllJustId();
+		return this.dietRepository.findAllJustId();
 	}
 }

@@ -11,9 +11,8 @@
 
 
 <myTags:template bodyName="Dashboard">
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-
+	<script type="text/javascript"
+		src="https://www.gstatic.com/charts/loader.js"></script>
 
 	<div class="panel panel-container" style="margin-top: 5em">
 		<div class="row">
@@ -49,9 +48,10 @@
 		<!--/.row-->
 	</div>
 
-	<script type="text/javascript"
-		src="https://www.gstatic.com/charts/loader.js"></script>
+
 	<script type="text/javascript">
+	
+	//ACESSOS DO MES
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
@@ -73,16 +73,61 @@
 
         chart.draw(data, options);
       }
+      
+      
+      google.charts.load("current", {packages:['corechart']});
+      google.charts.setOnLoadCallback(drawChartColumn);
+      function drawChartColumn() {
+        var data = google.visualization.arrayToDataTable([
+          ["Element", "Density", { role: "style" } ],
+          ["Copper", 8.94, "#b87333"],
+          ["Silver", 10.49, "silver"],
+          ["Gold", 19.30, "gold"],
+          ["Platinum", 21.45, "color: #e5e4e2"],
+          ["Platinum", 21.45, "color: #e5e4e2"]
+        ]);
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+                         { calc: "stringify",
+                           sourceColumn: 1,
+                           type: "string",
+                           role: "annotation" },
+                         2]);
+
+        var options = {
+          title: "Density of Precious Metals, in g/cm^3",
+          width: 600,
+          height: 400,
+          bar: {groupWidth: "95%"},
+          legend: { position: "none" },
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+        chart.draw(view, options);
+    }
     </script>
 
 	<div class="row">
 		<div class="col-lg-10 col-lg-offset-1">
 
-			<div class="col-lg-6 col-lg-offset-3">
+			<div class="col-lg-6">
 				<div class="panel panel-default">
 					<div class="canvas-heading text-center">
 						<div class="panel-body">
 							<div class="canvas-wrapper">
+								<div id="piechart" style="width: 500px; height: 400px;margin-top: -30px"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-lg-6">
+				<div class="panel panel-default">
+					<div class="canvas-heading text-center">
+						<div class="panel-body">
+							<div class="canvas-wrapper">
+								<div id="columnchart_values" style="width: 500px; height: 400px;margin-top: -30px">Test</div>
 								<div id="piechart" style="width: 500px; height: 400px;margin-top: -30px"></div>
 							</div>
 						</div>

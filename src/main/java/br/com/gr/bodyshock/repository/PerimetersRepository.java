@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import br.com.gr.bodyshock.model.Perimetros;
 
-public interface PerimetrosRepository extends CrudRepository<Perimetros, Long> {
+public interface PerimetersRepository extends CrudRepository<Perimetros, Long> {
 
 }

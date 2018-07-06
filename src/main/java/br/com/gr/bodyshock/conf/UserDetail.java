@@ -8,21 +8,21 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import br.com.gr.bodyshock.model.Usuario;
-import br.com.gr.bodyshock.repository.UsuarioRepository;
+import br.com.gr.bodyshock.repository.UserRepository;
 
 @Repository
 @Transactional
 public class UserDetail implements UserDetailsService {
 
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private UserRepository userRepository;
 
 	@Override
 	public Usuario loadUserByUsername(String email) throws UsernameNotFoundException {
-		Usuario usuario = this.usuarioRepository.findByEmail(email);
+		Usuario usuario = this.userRepository.findByEmail(email);
 
 		if (usuario == null)
-			throw new RuntimeException("Usuario " + email + " não encontrado!");
+			throw new RuntimeException("User " + email + " not found!");
 
 		return usuario;
 	}

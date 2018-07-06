@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.gr.bodyshock.model.Role;
 import br.com.gr.bodyshock.model.Usuario;
-import br.com.gr.bodyshock.repository.UsuarioRepository;
+import br.com.gr.bodyshock.repository.UserRepository;
 import br.com.gr.bodyshock.service.UserService;
 import br.com.gr.bodyshock.util.HashGenerator;
 
@@ -18,11 +18,11 @@ import br.com.gr.bodyshock.util.HashGenerator;
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private UserRepository userRepository;
 
 	@Override
 	public Usuario findByEmail(String email) {
-		return this.usuarioRepository.findByEmail(email);
+		return this.userRepository.findByEmail(email);
 	}
 
 	@Override
@@ -30,12 +30,12 @@ public class UserServiceImpl implements UserService {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		usuario.setSenha(encoder.encode(senha));
 		usuario.setToken(HashGenerator.md5(usuario.getEmail() + usuario.getSenha().hashCode()));
-		usuarioRepository.save(usuario);
+		userRepository.save(usuario);
 	}
 
 	@Override
 	public Usuario findByToken(String token) {
-		return this.usuarioRepository.findByToken(token);
+		return this.userRepository.findByToken(token);
 	}
 
 	@Override
@@ -45,22 +45,22 @@ public class UserServiceImpl implements UserService {
 		
 		usuario.setRoles(Arrays.asList(new Role(role)));
 		usuario.setToken(HashGenerator.md5(usuario.getEmail() + usuario.getSenha().hashCode()));
-		usuarioRepository.save(usuario);
+		userRepository.save(usuario);
 	}
 
 	@Override
 	public void update(Usuario usuario) {
-		this.usuarioRepository.save(usuario);
+		this.userRepository.save(usuario);
 	}
 
 	@Override
 	public Usuario findById(Long id) {
-		return this.usuarioRepository.findById(id).get();
+		return this.userRepository.findById(id).get();
 	}
 
 	@Override
 	public List<Usuario> findAll() {
-		return (List<Usuario>) this.usuarioRepository.findAll();
+		return (List<Usuario>) this.userRepository.findAll();
 	}
 
 	@Override
@@ -70,6 +70,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void delete(Usuario usuario) {
-		this.usuarioRepository.delete(usuario);
+		this.userRepository.delete(usuario);
 	}
 }

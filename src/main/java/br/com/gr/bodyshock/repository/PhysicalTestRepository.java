@@ -14,7 +14,7 @@ import br.com.gr.bodyshock.model.Avaliacao;
 import br.com.gr.bodyshock.model.Avaliado;
 
 @Repository
-public interface AvaliacaoRepository extends CrudRepository<Avaliacao, Long> {
+public interface PhysicalTestRepository extends CrudRepository<Avaliacao, Long> {
 
 	Long countByDataAfterAndStatus(Calendar calendar, Status status);
 

@@ -6,38 +6,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.gr.bodyshock.model.TesteResistencia;
-import br.com.gr.bodyshock.repository.TesteResistenciaRepository;
+import br.com.gr.bodyshock.repository.ResistenceTestRepository;
 import br.com.gr.bodyshock.service.ResistenceTestService;
 
 @Service
 public class ResistenceTestServiceImpl implements ResistenceTestService {
 
 	@Autowired
-	private TesteResistenciaRepository testeResistenciaRepository;
+	private ResistenceTestRepository resistenceTestRepository;
 
 	@Override
 	public void save(TesteResistencia testeResistencia) {
-		this.testeResistenciaRepository.save(testeResistencia);
+		this.resistenceTestRepository.save(testeResistencia);
 	}
 
 	@Override
 	public void update(TesteResistencia testeResistencia) {
-		this.testeResistenciaRepository.save(testeResistencia);
+		this.resistenceTestRepository.save(testeResistencia);
 	}
 
 	@Override
 	public TesteResistencia findById(Long id) {
-		return this.testeResistenciaRepository.findById(id).get();
+		return this.resistenceTestRepository.findById(id).get();
 	}
 
 	@Override
 	public List<TesteResistencia> findAll() {
-		return (List<TesteResistencia>) this.testeResistenciaRepository.findAll();
+		return (List<TesteResistencia>) this.resistenceTestRepository.findAll();
 	}
 
 	@Override
 	public void delete(TesteResistencia testeResistencia) {
-		this.testeResistenciaRepository.delete(testeResistencia);
+		this.resistenceTestRepository.delete(testeResistencia);
 	}
 
 }

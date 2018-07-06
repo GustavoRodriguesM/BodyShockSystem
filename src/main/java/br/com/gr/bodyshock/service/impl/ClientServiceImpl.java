@@ -19,9 +19,9 @@ import br.com.gr.bodyshock.model.Dieta;
 import br.com.gr.bodyshock.model.Horario;
 import br.com.gr.bodyshock.model.Treino;
 import br.com.gr.bodyshock.model.Usuario;
-import br.com.gr.bodyshock.repository.AvaliadoRepository;
-import br.com.gr.bodyshock.repository.DietaRepository;
-import br.com.gr.bodyshock.repository.TreinoRepository;
+import br.com.gr.bodyshock.repository.ClientRepository;
+import br.com.gr.bodyshock.repository.DietRepository;
+import br.com.gr.bodyshock.repository.TrainingRepository;
 import br.com.gr.bodyshock.service.ClientService;
 import br.com.gr.bodyshock.service.PollockProtocolService;
 import br.com.gr.bodyshock.service.DietService;
@@ -32,13 +32,13 @@ import br.com.gr.bodyshock.service.UserService;
 public class ClientServiceImpl implements ClientService {
 
 	@Autowired
-	private AvaliadoRepository avaliadoRepository;
+	private ClientRepository clientRepository;
 
 	@Autowired
-	private DietaRepository dietaRepository;
+	private DietRepository dietRepository;
 
 	@Autowired
-	private TreinoRepository treinoRepository;
+	private TrainingRepository trainingRepository;
 
 	@Autowired
 	private UserService usuarioService;
@@ -57,12 +57,12 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override
 	public List<Avaliado> buscaSomenteNome() {
-		return this.avaliadoRepository.findAllJustName();
+		return this.clientRepository.findAllJustName();
 	}
 
 	@Override
 	public Avaliado findByUser(Usuario usuario) {
-		Avaliado avaliado = this.avaliadoRepository.findByUsuario(usuario);
+		Avaliado avaliado = this.clientRepository.findByUsuario(usuario);
 		return avaliado;
 	}
 
@@ -77,12 +77,12 @@ public class ClientServiceImpl implements ClientService {
 	@Override
 	public void changeDietAndTraining(Long idAvaliado, String idDieta, String idTreino) {
 
-		Avaliado avaliado = avaliadoRepository.findById(idAvaliado).get();
-		Dieta dieta = dietaRepository.findById(idDieta).get();
-		Treino treino = treinoRepository.findById(idTreino).get();
+		Avaliado avaliado = clientRepository.findById(idAvaliado).get();
+		Dieta dieta = dietRepository.findById(idDieta).get();
+		Treino treino = trainingRepository.findById(idTreino).get();
 		avaliado.setTreino(treino);
 		avaliado.setDieta(dieta);
-		avaliadoRepository.save(avaliado);
+		clientRepository.save(avaliado);
 
 	}
 
@@ -112,7 +112,7 @@ public class ClientServiceImpl implements ClientService {
 		avaliado.setDiasTreinados(diasTreinados);
 		avaliado.setDiaTreino(diaTreino);
 		avaliado.setTreino(treino);
-		avaliadoRepository.save(avaliado);
+		clientRepository.save(avaliado);
 
 	}
 
@@ -120,28 +120,28 @@ public class ClientServiceImpl implements ClientService {
 	public void save(Avaliado avaliado) {
 		avaliado.setDiasTreinados(1);
 		avaliado.setDiaTreino(1);
-		avaliadoRepository.save(avaliado);
+		clientRepository.save(avaliado);
 	}
 
 	@Override
 	public void update(Avaliado avaliado) {
-		this.avaliadoRepository.save(avaliado);
+		this.clientRepository.save(avaliado);
 	}
 
 	@Override
 	public Avaliado findById(Long id) {
-		Avaliado avaliado = this.avaliadoRepository.findById(id).get();
+		Avaliado avaliado = this.clientRepository.findById(id).get();
 		return avaliado;
 	}
 
 	@Override
 	public List<Avaliado> findAll() {
-		return (List<Avaliado>) this.avaliadoRepository.findAll();
+		return (List<Avaliado>) this.clientRepository.findAll();
 	}
 
 	@Override
 	public void delete(Avaliado avaliado) {
-		this.avaliadoRepository.delete(avaliado);
+		this.clientRepository.delete(avaliado);
 	}
 
 	@Override
@@ -324,7 +324,7 @@ public class ClientServiceImpl implements ClientService {
 
 	@Override
 	public List<Avaliado> findByPageRequest(PageRequest pageRequest) {
-		return this.avaliadoRepository.findAll(pageRequest).getContent();
+		return this.clientRepository.findAll(pageRequest).getContent();
 	}
 
 	@Override
