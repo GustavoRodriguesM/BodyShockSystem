@@ -8,6 +8,7 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import br.com.gr.bodyshock.model.Avaliado;
@@ -18,6 +19,8 @@ public class PhysicalTestValidationMailer extends AbstractMailer{
 	@Autowired
 	private JavaMailSender emailSender;
 
+	
+	@Async
 	public void send(Avaliado client) {
 		MimeMessage message = emailSender.createMimeMessage();
 		try {
